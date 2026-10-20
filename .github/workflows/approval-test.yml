@@ -1,0 +1,22 @@
+
+name: Test Manual Approval
+
+on:
+  workflow_dispatch:
+
+jobs:
+  approval:
+    runs-on: ubuntu-latest
+    environment: prod
+
+    steps:
+      - name: Approval completed
+        run: echo "Deployment approved!"
+
+  test:
+    needs: approval
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Simulate deployment
+        run: echo "Fake deployment successful!"
